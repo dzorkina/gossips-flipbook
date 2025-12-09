@@ -93,7 +93,10 @@ function checkPassword() {
         Страница <span id="page-current">1</span> / <span id="page-total">60</span>
     </div>
 </div>
-
+<div class="jump-container">
+    <input id="jumpInput" type="number" min="1" max="60" placeholder="№" class="jump-input">
+    <button id="jumpBtn" class="jump-btn">Перейти</button>
+</div>
 
 </main>
 
@@ -140,6 +143,22 @@ function checkPassword() {
     document.getElementById("next_m").addEventListener("click", () => showPage(current + 1));
     document.getElementById("first_m").addEventListener("click", () => showPage(0));
     document.getElementById("last_m").addEventListener("click", () => showPage(TOTAL_PAGES - 1));
+
+    document.getElementById("jumpBtn").addEventListener("click", () => {
+    const num = parseInt(document.getElementById("jumpInput").value);
+
+    if (!isNaN(num) && num >= 1 && num <= TOTAL_PAGES) {
+        showPage(num - 1);
+    } else {
+        alert("Такой страницы нет.");
+    }
+});
+
+document.getElementById("jumpInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        document.getElementById("jumpBtn").click();
+    }
+});
 
     // Клавиатура
     document.addEventListener("keydown", (e) => {
