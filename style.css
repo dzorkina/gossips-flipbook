@@ -1,0 +1,221 @@
+:root {
+    --bg-dark: #160107;
+    --bg-deep: #0a0003;
+    --bg-burgundy: #3a0713;
+    --accent: #8b2b3b;
+    --accent-soft: #5a1a27;
+    --text: #f6e9ee;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:
+        radial-gradient(circle at 0 0, #4a1020 0, transparent 40%),
+        radial-gradient(circle at 100% 0, #3a0713 0, transparent 40%),
+        radial-gradient(circle at 50% 100%, #20030a 0, #080104 70%);
+    color: var(--text);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.intro-text {
+    font-family: "Great Vibes", cursive;
+    text-align: center;
+    font-size: 35px;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+.intro-text .small {
+    font-family: "Great Vibes", cursive;
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.login-btn {
+    font-family: 'Great Vibes', cursive;
+    padding: 10px 24px;
+    background: #3a0713;
+    border: 1px solid #8b2b3b;
+    color: var(--text);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.25s ease,
+}
+
+.login-btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.65);
+    background: #a53649;
+}
+
+.login-btn:active {
+    transform: translateY(0px);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.85);
+}
+
+
+header {
+    width: 100%;
+    padding: 14px 10px;
+    background: #0b0004;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    text-align: center;
+}
+
+header h1 {
+    font-family: "UnifrakturMaguntia", cursive;
+    font-weight: 100;
+    margin: 0;
+    letter-spacing: 0.10em;
+    font-size: clamp(32px, 3vw, 48px);
+}
+
+
+.viewer {
+    width: 100%;
+    max-width: 1200px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.page-frame {
+    width: 100%;
+    max-width: 1100px;
+    max-height: calc(100vh - 200px);
+    padding: 16px;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 0 0, #4a1020 0, transparent 50%),
+        radial-gradient(circle at 100% 0, #3a0713 0, transparent 55%),
+        linear-gradient(135deg, #20010a, #0a0003);
+
+    box-shadow:
+        0 24px 60px rgba(0,0,0,0.9),
+        inset 0 0 35px rgba(0,0,0,0.7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-image {
+    max-width: 100%;
+    max-height: calc(100vh - 240px);
+    width: auto;
+    height: auto;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+
+.controls {
+    font-family: "Great Vibes", cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.desktop-row {
+    display: flex;
+    flex-direction: row;
+    gap: 18px;
+    justify-content: center;
+}
+
+.mobile-row {
+    display: none; /* скрываем мобильные кнопки на ПК */
+}
+
+.controls button {
+    font-family: "Great Vibes", cursive;
+    border: 1px solid rgba(246,233,238,0.4);
+    background: radial-gradient(circle at 20% 0, #8b2b3b, #3a0713 55%, #120005);
+    color: var(--text);
+    padding: 8px 24px;
+    border-radius: 999px;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+.controls button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 7px 18px rgba(0,0,0,0.75);
+}
+
+.controls button:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.85);
+}
+
+.page-indicator {
+    padding: 4px 10px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+
+
+@media (max-width: 768px) {
+
+  .page-frame {
+        max-width: 100vw;
+        max-height: calc(100vh - 120px);
+        padding: 4px; 
+        border-radius: 6px;
+        box-shadow: none; 
+        background: none; /* Убираем рамку полностью */
+    }
+
+    #page-image {
+        max-width: 100vw;
+        max-height: calc(100vh - 150px); /* Почти ВСЯ высота экрана */
+    }
+
+    /* скрываем ПК-рязряд кнопок */
+    .desktop-row {
+        display: none;
+    }
+
+    /* включаем мобильные 2 строки */
+    .mobile-row {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .controls button {
+        font-size: 13px;
+        max-width: 500px;
+        padding: 10px 18px;
+    }
+
+    .page-indicator {
+        font-size: 15px;
+        margin-top: 10px;
+    }
+}
